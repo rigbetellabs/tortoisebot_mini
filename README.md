@@ -63,7 +63,7 @@ It will prompt a INFO message saying "Waiting for socket connections on port 114
 
 ### 3.2 Turning on Robot:
 
-Once the above INFO message is popped up, then you can turn on your Robot upon which you will see that different ROS topics start autonmatically.
+Once the above INFO message is popped up, then you can turn on your Robot upon which you will see that different ROS topics start automatically.
 
 ### 3.3 Testing out Teleop:
 
