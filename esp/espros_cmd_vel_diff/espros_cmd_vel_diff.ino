@@ -7,6 +7,14 @@
 
 #define DEBUG 0
 
+double WheelSeparation = 0.1 ;
+double WheelDiameter = 0.065 ;
+double WheelRadius = WheelDiameter/2.0 ;
+double WheelCircum = 2 * 3.14 * WheelRadius ;
+
+double MinVel = 0.1   ;
+double MaxVel = 0.22  ;
+
 const char* ssid = "RigBetel Labs Guest"; 
 const char* password = "starsoforion2020"; 
 
@@ -65,9 +73,6 @@ int right_dir  = 2  ;     //  Left Direction 1 for Forward, 0 for Backward
 int left_speed_pwm  = 255  ;
 int right_speed_pwm = 255  ;
 
-int left_turn_pwm  = 220  ;
-int right_turn_pwm = 220  ;
-
 int dir_forward   = 1 ;
 int dir_backward  = 0 ;
 
@@ -79,126 +84,125 @@ void bot_stop()
   analogWrite(  right_pwm , 0 ) ;
 }
 
-void forward()
+double speedlimitLeft ( double left_vel )
 {
-  digitalWrite( left_dir  , dir_forward ) ;
-  digitalWrite( right_dir , dir_forward ) ;
-  analogWrite(  left_pwm  , left_speed_pwm ) ;
-  analogWrite(  right_pwm , right_speed_pwm ) ;
+  double pwmLeft;
+  
+  if (left_vel >= MaxVel){
+    left_vel = MaxVel ;
+  }
+
+  else if (left_vel != 0.0 && left_vel <= MinVel ){
+    left_vel = MinVel ;
+  }
+
+  pwmLeft = ( 583.334 * left_vel ) + 126.666 ;
+
+  return pwmLeft ;
 }
 
-void backward()
+double speedlimitRight ( double right_vel )
+{
+  double pwmRight;
+  
+  if (right_vel >= MaxVel){
+    right_vel = MaxVel ;
+  }
+
+  else if (right_vel != 0.0 && right_vel <= MinVel ){
+    right_vel = MinVel ;
+  }
+
+  pwmRight = ( 583.334 * right_vel ) + 126.666 ;
+
+  return pwmRight ;
+  
+}
+
+// y = 583.3333333333334x + 126.66666666666666
+
+double forward( double left_speed , double right_speed )
+{
+  
+  digitalWrite( left_dir  , dir_forward ) ;
+  digitalWrite( right_dir , dir_forward ) ;
+  analogWrite(  left_pwm  , (int) speedlimitLeft(left_speed) ) ;
+  analogWrite(  right_pwm , (int) speedlimitRight(right_speed) ) ;
+}
+
+double backward( double left_speed , double right_speed )
 {
   digitalWrite( left_dir  , dir_backward ) ;
   digitalWrite( right_dir , dir_backward ) ;
-  analogWrite(  left_pwm  , left_speed_pwm ) ;
-  analogWrite(  right_pwm , right_speed_pwm ) ;
+  analogWrite(  left_pwm  , (int) speedlimitLeft(left_speed) ) ;
+  analogWrite(  right_pwm , (int) speedlimitRight(right_speed) ) ;
 }
 
-void left()
+double left( double left_speed , double right_speed )
 {
   digitalWrite( left_dir  , dir_backward ) ;
   digitalWrite( right_dir , dir_forward  ) ;
-  analogWrite(  left_pwm  , left_turn_pwm ) ;
-  analogWrite(  right_pwm , right_turn_pwm ) ;
+  analogWrite(  left_pwm  , (int) speedlimitLeft(left_speed) ) ;
+  analogWrite(  right_pwm , (int) speedlimitRight(right_speed) ) ;
 }
 
-void right()
+double right( double left_speed , double right_speed )
 {
   digitalWrite( left_dir  , dir_forward  ) ;
   digitalWrite( right_dir , dir_backward ) ;
-  analogWrite(  left_pwm  , left_turn_pwm ) ;
-  analogWrite(  right_pwm , right_turn_pwm ) ;
-}
-
-void forwardRight()
-{
-  digitalWrite( left_dir  , dir_forward ) ;
-  digitalWrite( right_dir , dir_forward ) ;
-  analogWrite(  left_pwm  , left_speed_pwm ) ;
-  analogWrite(  right_pwm , 0 ) ;
-}
-
-void forwardLeft()
-{
-  digitalWrite( left_dir  , dir_forward ) ;
-  digitalWrite( right_dir , dir_forward ) ;
-  analogWrite(  left_pwm  , 0 ) ;
-  analogWrite(  right_pwm , right_speed_pwm ) ;
-}
-
-void backwardLeft()
-{
-  digitalWrite( left_dir  , dir_backward ) ;
-  digitalWrite( right_dir , dir_backward ) ;
-  analogWrite(  left_pwm  , left_speed_pwm ) ;
-  analogWrite(  right_pwm , 0 ) ;
-}
-
-void backwardRight()
-{
-  digitalWrite( left_dir  , dir_backward ) ;
-  digitalWrite( right_dir , dir_backward ) ;
-  analogWrite(  left_pwm  , 0 ) ;
-  analogWrite(  right_pwm , right_speed_pwm ) ;
+  analogWrite(  left_pwm  , (int) speedlimitLeft(left_speed) ) ;
+  analogWrite(  right_pwm , (int) speedlimitRight(right_speed) ) ;
 }
 
 
 
 void cmd_velCallback( const geometry_msgs::Twist& CVel) {
   //geometry_msgs::Twist twist = twist_msg;
-  double vel_x = CVel.linear.x;
-  double vel_th = CVel.angular.z;
+  double linear_vel = CVel.linear.x;
+  double angular_vel = CVel.angular.z;
+  double right_vel = 0.0;
+  double left_vel = 0.0;
   //Serial.print(vel_x);
   //Serial.print("\t");
   //Serial.println(vel_th);
 
-  if ( vel_x == 0 && vel_th == 0 ){
-    //Serial.println("stop");
+  double rplusl = ( 2 * linear_vel ) / WheelRadius ;
+  double rminusl = ( angular_vel * WheelSeparation ) / WheelRadius ;
+
+  double right_omega = ( rplusl + rminusl ) / 2 ;
+  double left_omega  = rplusl - right_omega ;
+    
+  right_vel = right_omega * WheelRadius ;
+  left_vel  = left_omega  * WheelRadius ;
+
+  Serial.print(left_vel);
+  Serial.print("\t");
+  Serial.println(right_vel);
+
+  if (left_vel == 0.0 && right_vel == 0.0){
     bot_stop();
   }
-
-  else if ( vel_x > 0 && vel_th == 0 ){
-    //Serial.println("forward");
-    forward();
+  
+  else if (left_vel >= 0.0 && right_vel >= 0.0){
+    forward(abs(left_vel), abs(right_vel));
   }
   
-  else if ( vel_x < 0 && vel_th == 0 ){
-    //Serial.println("backward");
-    backward();
-  }
-
-  else if ( vel_x == 0 && vel_th > 0 ){
-    //Serial.println("left");
-    left();
+  else if (left_vel <= 0.0 && right_vel <= 0.0){
+    backward(abs(left_vel), abs(right_vel));
   }
   
-  else if ( vel_x == 0 && vel_th < 0 ){
-    //Serial.println("right");
-    right();
+  else if (left_vel < 0.0 && right_vel > 0.0){
+    left(abs(left_vel), abs(right_vel));
   }
-
-  else if ( vel_x > 0 && vel_th > 0 ){
-    forwardLeft();
+  
+  else if (left_vel > 0.0 && right_vel < 0.0){
+    right(abs(left_vel), abs(right_vel));
   }
-
-  else if ( vel_x > 0 && vel_th < 0 ){
-    forwardRight();
-  }
-
-  else if ( vel_x < 0 && vel_th > 0 ){
-    backwardLeft();
-  }
-
-  else if ( vel_x < 0 && vel_th < 0 ){
-    backwardRight();
-  }
-
-  else
-  {
+  
+  else{
     bot_stop();
   }
-
+ 
   
 }
 
