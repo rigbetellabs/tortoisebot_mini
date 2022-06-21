@@ -10,7 +10,7 @@
 
 ---
 
-<p style="text-align:center"><a href="#connect-with-us-">Connect with Us</a> • <a href="#requirements-">Requirements</a> • <a href="#features-">Features</a> • <a href="#demo-video-">Demo</a> • <a href="#techincal-specifications-">Technical Specifications</a> • <a href="#schematic-">Schematic</a></p>
+<p align="center"><a href="#connect-with-us-">Connect with Us</a> • <a href="#requirements-">Requirements</a> • <a href="#features-">Features</a> • <a href="#demo-video-">Demo</a> • <a href="#techincal-specifications-">Technical Specifications</a> • <a href="#schematic-">Schematic</a></p>
 
 <h1 style="text-align:center">Tortoisebot</h1>
 
