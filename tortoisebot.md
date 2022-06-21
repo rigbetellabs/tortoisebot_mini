@@ -63,7 +63,7 @@ Check specifications here:
 
 Search file easily to find it's location:
 
-<a href="https://github.com/MrinalKarmokar/readme/blob/main/file_structure.md">![File-Structure](https://img.shields.io/badge/docs_file-file_structure-blue?style=for-the-badge&logo=appveyor?label)</a>
+<a href="https://github.com/rigbetellabs/tortoisebot_mini_docs/blob/main/file_structure.md">![File-Structure](https://img.shields.io/badge/docs_file-file_structure-blue?style=for-the-badge&logo=appveyor?label)</a>
 
 ## Schematic ![some-changes](https://img.shields.io/badge/some_changes-yellow)
 
