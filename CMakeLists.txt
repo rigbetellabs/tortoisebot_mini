@@ -11,6 +11,9 @@ find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
   rospy
   std_msgs
+  rosserial
+  rosserial_arduino
+  teleop_twist_keyboard
 )
 
 ## System dependencies are found with CMake's conventions
