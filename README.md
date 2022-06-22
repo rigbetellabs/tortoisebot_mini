@@ -8,7 +8,7 @@
 
 ---
 
-<p align="center"><a href="#connect-with-us-">Connect with Us</a> • <a href="1-installation">Installation</a> • <a href="#2-setup">Setup</a> • <a href="#3-demo">Demo</a> • <a href="#references">References</a></p>
+<p align="center"><a href="#connect-with-us-">Connect with Us</a> • <a href="#1-installation">Installation</a> • <a href="#2-setup">Setup</a> • <a href="#3-demo">Demo</a> • <a href="#references">References</a></p>
 
 <h1 align="center"> TortoiseBot Mini </h1>
 
