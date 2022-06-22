@@ -12,7 +12,7 @@
 
 <p align="center"><a href="#connect-with-us-">Connect with Us</a> • <a href="#requirements-">Requirements</a> • <a href="#features-">Features</a> • <a href="#demo-video-">Demo</a> • <a href="#techincal-specifications-">Technical Specifications</a> • <a href="#schematic-">Schematic</a></p>
 
-<p align="center"><h1>Tortoisebot</h1></p>
+<h1 align="center">Tortoisebot</h1>
 
 TortoiseBot is an extremely learner-friendly and cost-efficient ROS based Open-Sourced mobile robot that is capable of doing Manual as well as Autonomous Mapping, Navigation, Simulation and a lot more thanks to the creativity and support of the Open-Source ROS Community!
 
