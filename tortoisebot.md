@@ -10,7 +10,7 @@
 
 ---
 
-<p align="center"><a href="#postbox-connect-with-us-">Connect with Us</a> • <a href="#heavy_check_mark-requirements-">Requirements</a> • <a href="#sunny-features-">Features</a> • <a href="#arrow_forward-demo-video-">Demo</a> • <a href="#page_with_curl-documentation-">Documentation</a> • <a href="#nut_and_bolt-techincal-specifications-">Technical Specifications</a> • <a href="#open_file_folder-folder-structure-">Folder Structure</a> • <a href="#mahjong-schematic-">Shematic</a></p>
+<p align="center"><a href="#postbox-connect-with-us-">Connect with Us</a> • <a href="#heavy_check_mark-requirements-">Requirements</a> • <a href="#sunny-features-">Features</a> • <a href="#arrow_forward-demo-video-">Demo</a> • <a href="#page_with_curl-documentation-">Documentation</a> • <a href="#nut_and_bolt-techincal-specifications-">Technical Specifications</a> • <a href="#open_file_folder-folder-structure-">Folder Structure</a> • <a href="#mahjong-schematic-">Schematic</a></p>
 
 <h1 align="center">Tortoisebot</h1>
 
