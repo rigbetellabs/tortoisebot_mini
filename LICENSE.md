@@ -1,4 +1,4 @@
-BSD 3-Clause License
+BSD License
 
 Copyright (c) 2022, RigBetel Labs LLP
 All rights reserved.
