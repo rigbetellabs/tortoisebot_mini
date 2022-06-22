@@ -1,4 +1,4 @@
-<h1 style="text-align:center"> TortoiseBot Mini </h1>
+<h1 align="center"> TortoiseBot Mini </h1>
 
 # 1. Installation
 
