@@ -1,4 +1,25 @@
+# ![TortoiseBot Banner](https://github.com/rigbetellabs/tortoisebot_docs/raw/master/imgs/packaging/pack_front.png)
+
+![stars](https://img.shields.io/github/stars/rigbetellabs/tortoisebot_mini?style=for-the-badge)
+![forks](https://img.shields.io/github/forks/rigbetellabs/tortoisebot_mini?style=for-the-badge)
+![watchers](https://img.shields.io/github/watchers/rigbetellabs/tortoisebot_mini?style=for-the-badge)
+![repo-size](https://img.shields.io/github/repo-size/rigbetellabs/tortoisebot_mini?style=for-the-badge)
+![contributors](https://img.shields.io/github/contributors/rigbetellabs/tortoisebot_mini?style=for-the-badge)
+
+---
+
+<p align="center"><a href="#connect-with-us-">Connect with Us</a> • <a href="1-installation">Installation</a> • <a href="#2-setup">Setup</a> • <a href="#3-demo">Demo</a> • <a href="#references">References</a></p>
+
 <h1 align="center"> TortoiseBot Mini </h1>
+
+# Connect with us ![some-changes](https://img.shields.io/badge/some_changes-yellow)
+
+<a href="https://rigbetellabs.com/">![Website](https://img.shields.io/website?down_color=lightgrey&down_message=offline&label=Rigbetellabs%20Website&style=for-the-badge&up_color=green&up_message=online&url=https%3A%2F%2Frigbetellabs.com%2F)</a>
+<a href="https://rigbetellabs.com/discord">![Discord Channel](https://img.shields.io/discord/890669104330063903?logo=Discord&style=for-the-badge)</a>
+<a href="https://www.youtube.com/channel/UCfIX89y8OvDIbEFZAAciHEA">![Youtube Subscribers](https://img.shields.io/youtube/channel/subscribers/UCfIX89y8OvDIbEFZAAciHEA?label=YT%20Subscribers&style=for-the-badge)</a>
+<a href="https://www.instagram.com/rigbetellabs/">![Instagram](https://img.shields.io/badge/Follow_on-Instagram-pink?style=for-the-badge&logo=appveyor?label=Instagram)</a>
+
+more...
 
 # 1. Installation
 
