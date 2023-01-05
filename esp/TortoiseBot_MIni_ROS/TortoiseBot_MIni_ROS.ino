@@ -1,29 +1,32 @@
 #include <ros.h>
-  #include <rblemi/Diff.h>
+#include <tortoisebot_mini/Diff.h>
 #include <WiFi.h>
+#include<analogWrite.h>
 
 #define DEBUG 0
 
 // 25 lb 26lf
 // 27 rf 13rb
 
-#define lpwmPin 33 //m1enable , f26, b25
-#define lfwdPin 26  
-#define lbackPin 25
+#define lpwmPin 32 //m1enable , f26, b25
+#define lfwdPin 25  
+#define lbackPin 26 
 
-#define rpwmPin  32 //m2enable , f27, 13
-#define rfwdPin 27
-#define rbackPin 13
+#define rpwmPin 33 //m2enable , f27, 13
+#define rfwdPin 13 
+#define rbackPin 27 
 
 // setting PWM properties
-const int freq = 5000;
-const int ledChannel = 0;
-const int resolution = 8;
+//const int freq = 5000;
+//const int ledChannel = 0;
+//const int resolution = 8;
+
 //wifi
 const char* ssid = "Rigbetel Labs HQ";
 const char* password = "Starsoforion2020";
+
 WiFiClient client;
-IPAddress server(192,168,0,223 );
+IPAddress server(192,168,0,160);
 
 class WiFiHardware {
   public:
@@ -63,7 +66,7 @@ int lefpwm = 0;
 
 ros::NodeHandle_<WiFiHardware> nh;
 
-void diffCb(const rblemi::Diff& toggle_msg){
+void diffCb(const tortoisebot_mini::Diff& toggle_msg){
 
   Serial.print("toggle_msg.rpwm.data: ");
   Serial.println(toggle_msg.rpwm.data);
@@ -84,7 +87,7 @@ void diffCb(const rblemi::Diff& toggle_msg){
   
 }
 
-ros::Subscriber<rblemi::Diff> sub_diff("diff", diffCb );
+ros::Subscriber<tortoisebot_mini::Diff> sub_diff("diff", diffCb );
 
 void setup() {
   
@@ -98,14 +101,14 @@ void setup() {
   Serial.begin(115200);
   
   setupWiFi();
+  
+//  ledcSetup(ledChannel, freq, resolution);
+//
+//  ledcAttachPin(rpwmPin, ledChannel);
+//  ledcAttachPin(lpwmPin, ledChannel);
 
-  ledcSetup(ledChannel, freq, resolution);
-
-  ledcAttachPin(rpwmPin, ledChannel);
-  ledcAttachPin(lpwmPin, ledChannel);
-
-  ledcWrite(rpwmPin, 0);
-  ledcWrite(lpwmPin, 0);
+  analogWrite(rpwmPin, 0);
+  analogWrite(lpwmPin, 0);
   
   nh.initNode();
   nh.subscribe(sub_diff);
