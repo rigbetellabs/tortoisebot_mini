@@ -32,19 +32,19 @@ git clone https://github.com/rigbetellabs/tortoisebot_mini
 
 ### 2.1 Change Wi-Fi's SSID and Password:
 
-Open the [espros_cmd_vel](https://github.com/rigbetellabs/tortoisebot_mini/blob/506f832b9e0385ce1e38ce5b1219167dbe5a9f84/esp/espros_cmd_vel/espros_cmd_vel.ino) code in Arduino IDE and change the SSID and Password on line number 10 & 11 to that of your Wi-Fi Connection.
+Open the [tortoisebot_mini_ros](https://github.com/rigbetellabs/tortoisebot_mini/blob/main/esp/tortoisebot_mini_ros/tortoisebot_mini_ros.ino) code in Arduino IDE and change the SSID and Password on line number 25 & 26 to that of your Wi-Fi Connection.
 
 ### 2.2 Change the ROS Master IP Address:
 
-Check the IP Address of your ROS Master PC using ifconfig command and put that in line number 14 of [espros_cmd_vel](https://github.com/rigbetellabs/tortoisebot_mini/blob/506f832b9e0385ce1e38ce5b1219167dbe5a9f84/esp/espros_cmd_vel/espros_cmd_vel.ino) code with commas(,) instead of dot(.)
+Check the IP Address of your ROS Master PC using ifconfig command and put that in line number 31 of [tortoisebot_mini_ros](https://github.com/rigbetellabs/tortoisebot_mini/blob/main/esp/tortoisebot_mini_ros/tortoisebot_mini_ros.ino) code with commas(,) instead of dot(.)
 
 ### 2.3 Check Board and Port:
 
-Make sure the switch on motor driver board is turned off and battery is not connected and then connect your ESP8266 board to your computer using USB type B cable. Make sure the board is selected to "NodeMCU 1.0 (ESP-12E Module)" in Arduino IDE and select the appropriate Port as well.
+Make sure the switch on motor driver board is turned off and battery is not connected and then connect your ESP32 board to your computer using USB type B cable. Make sure the board is selected to "ESP32 Dev Module" in Arduino IDE and select the appropriate Port as well.
 
 ### 2.4 Upload the Code:
 
-Upload the [espros_cmd_vel](https://github.com/rigbetellabs/tortoisebot_mini/blob/506f832b9e0385ce1e38ce5b1219167dbe5a9f84/esp/espros_cmd_vel/espros_cmd_vel.ino) code on your ESP8266 Node MCU board.
+Upload the [tortoisebot_mini_ros](https://github.com/rigbetellabs/tortoisebot_mini/blob/main/esp/tortoisebot_mini_ros/tortoisebot_mini_ros.ino) code on your ESP32 board.
 
 ### 2.5 Connection:
 
@@ -67,7 +67,7 @@ Once the above INFO message is popped up, then you can turn on your Robot upon w
 
 ### 3.3 Testing out Teleop:
 
-Keep the previous terminal running ad on a new terminal type the following command to start the teleoperation node.
+Keep the previous terminal running add on a new terminal type the following command to start the teleoperation node.
 ```
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
