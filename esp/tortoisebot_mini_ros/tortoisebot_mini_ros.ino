@@ -1,3 +1,11 @@
+// lpwm - left PWM Pin
+// lfwd - Left Forward Pin
+// lback - Left Backward Pin
+
+// lpwm - Right PWM Pin
+// lfwd - Right Forward Pin
+// lback - Right Backward Pin
+
 #include <ros.h>
 #include <tortoisebot_mini/Diff.h>
 #include <WiFi.h>
@@ -5,27 +13,21 @@
 
 #define DEBUG 0
 
-// 25 lb 26lf
-// 27 rf 13rb
-
-#define lpwmPin 32 //m1enable , f26, b25
+#define lpwmPin 32 
 #define lfwdPin 25  
 #define lbackPin 26 
 
-#define rpwmPin 33 //m2enable , f27, 13
+#define rpwmPin 33 
 #define rfwdPin 13 
 #define rbackPin 27 
 
-// setting PWM properties
-//const int freq = 5000;
-//const int ledChannel = 0;
-//const int resolution = 8;
-
-//wifi
+//add your wifi ssid & password
 const char* ssid = "Rigbetel Labs HQ";
 const char* password = "Starsoforion2020";
 
 WiFiClient client;
+//add host device IP address
+// to find host IP in cmd : hostname -I
 IPAddress server(192,168,0,160);
 
 class WiFiHardware {
@@ -101,11 +103,6 @@ void setup() {
   Serial.begin(115200);
   
   setupWiFi();
-  
-//  ledcSetup(ledChannel, freq, resolution);
-//
-//  ledcAttachPin(rpwmPin, ledChannel);
-//  ledcAttachPin(lpwmPin, ledChannel);
 
   analogWrite(rpwmPin, 0);
   analogWrite(lpwmPin, 0);
