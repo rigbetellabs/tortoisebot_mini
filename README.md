@@ -57,7 +57,7 @@ Upload the [tortoisebot_mini_ros](https://github.com/rigbetellabs/tortoisebot_mi
 
 ### 2.5 Connection:
 
-Once code is Successfully uploaded, disconnect the USB Cable and connect the DC Jack of Battery to Motor Driver Board. <br>
+Once code is Successfully uploaded, disconnect the USB Cable and connect the DC Jack of Battery to the Board . <br>
 DO NOT TURN ON THE ROBOT YET!
 
 ## 3. Demo:
