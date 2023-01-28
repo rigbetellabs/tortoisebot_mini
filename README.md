@@ -18,8 +18,8 @@ After that go into Tools > Board > Boards Manager and search for "esp32" and ins
 
 ### 1.3 Install ROS Serial Library for Arduino on Ubuntu:
 ```
-sudo apt-get install ros-melodic-rosserial-arduino
-sudo apt-get install ros-melodic-rosserial
+sudo apt-get install ros-$DISTRO-rosserial-arduino
+sudo apt-get install ros-$DISTRO-rosserial
 ```
 
 ### 1.4 Clone the TortoiseBot Mini Repo:
@@ -59,7 +59,6 @@ Upload the [tortoisebot_mini_ros](https://github.com/rigbetellabs/tortoisebot_mi
 
 Once code is Successfully uploaded, disconnect the USB Cable and connect the DC Jack of Battery to Motor Driver Board. <br>
 DO NOT TURN ON THE ROBOT YET!
-
 
 ## 3. Demo:
 
