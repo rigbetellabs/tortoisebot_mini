@@ -83,7 +83,7 @@ rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 > Note that the minimum operational speed for the robot is :
 > - Linear Velocity : 0.131 m/s
-> - Angular Velocity : 2.175 m/s
+> - Angular Velocity : 2.175 r/s
 
 Now you can control the robot using teleoperation commands.
 
