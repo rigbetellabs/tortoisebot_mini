@@ -18,8 +18,8 @@ After that go into Tools > Board > Boards Manager and search for "esp32" and ins
 
 ### 1.3 Install ROS Serial Library for Arduino on Ubuntu:
 ```
-sudo apt-get install ros-$DISTRO-rosserial-arduino
-sudo apt-get install ros-$DISTRO-rosserial
+sudo apt-get install ros-$ROS_DISTRO-rosserial-arduino
+sudo apt-get install ros-$ROS_DISTRO-rosserial
 ```
 
 ### 1.4 Clone the TortoiseBot Mini Repo:
