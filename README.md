@@ -14,7 +14,7 @@ Simply go to Files > Preferences and add the following line in the Additional Bo
 ```
 https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json
 ```
-After that go into Tools > Board > Boards Manager and search for "esp8266" and install the ESP8266 board by ESP8266 Community. That's it!
+After that go into Tools > Board > Boards Manager and search for "esp32" and install the ESP32 board. That's it!
 
 ### 1.3 Install ROS Serial Library for Arduino on Ubuntu:
 ```
@@ -29,6 +29,15 @@ git clone https://github.com/rigbetellabs/tortoisebot_mini
 ```
 
 ## 2. Setup:
+
+### 2.0 Build the Arduino serial library and msgs 
+Navigate to Arduino > libraries 
+Open a terminal in the current directory 
+```
+rosrun rosserial_arduino make_libraries.py .
+```
+This should build the required msgs 
+
 
 ### 2.1 Change Wi-Fi's SSID and Password:
 
@@ -51,6 +60,7 @@ Upload the [tortoisebot_mini_ros](https://github.com/rigbetellabs/tortoisebot_mi
 Once code is Successfully uploaded, disconnect the USB Cable and connect the DC Jack of Battery to Motor Driver Board. <br>
 DO NOT TURN ON THE ROBOT YET!
 
+
 ## 3. Demo:
 
 ### 3.1 Running ROS Master:
@@ -71,8 +81,13 @@ Keep the previous terminal running add on a new terminal type the following comm
 ```
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
+> Note that the minimum operational speed for the robot is :
+> - Linear Velocity : 0.131 m/s
+> - Angular Velocity : 2.175 m/s
+
 Now you can control the robot using teleoperation commands.
 
 ## References:
+- http://wiki.ros.org/rosserial_arduino/Tutorials/Arduino%20IDE%20Setup
 - https://github.com/agnunez/espros
 - https://github.com/RoboTakao/NX15A
