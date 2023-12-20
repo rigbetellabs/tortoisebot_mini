@@ -9,7 +9,7 @@
 #include <ros.h>
 #include <tortoisebot_mini/Diff.h>
 #include <WiFi.h>
-#include<analogWrite.h>
+
 
 #define DEBUG 0
 
@@ -28,7 +28,7 @@ const char* password = "Starsoforion2020";
 WiFiClient client;
 //add host device IP address
 // to find host IP in cmd : hostname -I
-IPAddress server(192,168,0,160);
+IPAddress server(192,168,0,215);
 
 class WiFiHardware {
   public:
@@ -73,8 +73,6 @@ void diffCb(const tortoisebot_mini::Diff& toggle_msg){
   Serial.print("toggle_msg.rpwm.data: ");
   Serial.println(toggle_msg.rpwm.data);
 
-  
-  
   analogWrite(rpwmPin, toggle_msg.rpwm.data);
   analogWrite(lpwmPin, toggle_msg.lpwm.data);
 
@@ -114,7 +112,20 @@ void setup() {
 
 void loop() {
 
-  nh.spinOnce();
-  delay(10);
+//  if(nh.connected()){
+//    nh.spinOnce();
+//    delay(1);
+//  }else{
+//    if(WiFi.status() != WL_CONNECTED){
+//      nh.loginfo("WiFi Disconnected trying to reconnect");
+//      setupWiFi();
+//    }else{
+//      nh.loginfo("unable to connect with ROS");
+//      nh.spinOnce();
+//    }
+//  }
+
+    nh.spinOnce();
+    delay(1);
 
 }
